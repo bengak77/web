@@ -1,0 +1,3 @@
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=12057434&assignment_repo_type=AssignmentRepo)
+# tpTest-HTML-CSS
+* suivre les instructions disponibles via ce [lien](https://docs.google.com/presentation/d/1buCTtCEKPk8fJEIBRB7eUhQHoe-FgIAOEEBg9qCghfA/edit?usp=sharing)

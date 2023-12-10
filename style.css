@@ -1,0 +1,108 @@
+body{
+   background-image: url(images/bodybkg.gif);
+   width: 960px center;
+   font-family:'Trebuchet MS';
+   margin-left: 15%;
+   margin-right: 15%;
+   d
+}
+
+
+h1{
+    color: #eba54f;
+}
+
+h2{
+    color :white;
+}
+#intro p {
+    color: #d6a965;
+}
+   
+
+.hover{
+     background-image: url(images/navbg.png);
+     color: white;
+     border-radius: 10px;
+     height: 40px; 
+     
+}
+
+.hover a{
+    text-decoration:none;
+    color: white;
+}
+
+.hover li{
+    display: inline-block;
+    padding: 10px;
+    margin-left: 80px;
+}
+a:hover {
+    color: #d6a965;
+    
+}
+
+#content{
+    background-color: #f2ede7;
+    border-radius: 10px;
+    
+}
+
+#intro{
+    background-image: url(images/introimage.png);
+    border-radius: 10px;
+    height: 220px;
+   
+ 
+}
+
+#intro h2  {
+    padding: 10px;
+    margin-left: 30px;
+}
+#intro p  {
+    padding: 1px;
+    margin-left: 30px;
+}
+
+footer{
+    background-color: #271408;
+    color: white;
+    border-radius: 10px;
+}
+
+
+.container {
+    width: 280px;
+    border-radius: .5em;
+    padding: 10px;
+    display: inline-block;
+    margin: 0.2em;
+    background-color: #d6a965;
+  }
+ .container img{
+    width: 200px;
+    border: solid 5px white;
+
+ }
+
+ .container1 {
+    width: 400px;
+    display: inline-block;
+    margin: 1em;   
+  }
+.container1 li{
+    list-style-type : none;
+}
+
+
+h3{
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+footer ul{
+    display: inline-block;
+}
