@@ -35,6 +35,7 @@ ol, ul {
     background-color: #fff;
 }
 
+a:hover { color: rgb(255, 38, 0);} /* lien survolé */
 /* Formulaire */
 form {
     color: #fff;
@@ -49,12 +50,6 @@ form {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Section principale (articles côte à côte) */
-section {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
 
 /* Styles pour chaque article et son conteneur */
 article {
@@ -66,10 +61,21 @@ article {
     margin-right: 10px; /* Ajoute une marge à droite pour espacement entre les articles */
 }
 
-/* Supprime la marge à droite du dernier article pour éviter un espace excessif */
-article:last-child {
-    margin-right: 0;
+/* Ajoutez ces styles pour centrer la vidéo et ajuster sa taille */
+#video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Ajoute une marge au-dessus de la vidéo pour l'espacement */
 }
+
+#video {
+    width: 100%; /* Ajustez la largeur de la vidéo en fonction de vos besoins */
+    max-width: 800px; /* Définissez une largeur maximale pour éviter qu'elle ne devienne trop grande */
+    height: auto; /* Assurez-vous que la hauteur s'ajuste automatiquement pour maintenir les proportions */
+}
+
+
 
 /* Barre de navigation */
 nav ul {
