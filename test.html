@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pandabuy France</title>
+
+<link rel="stylesheet" href="assets/css/global.css" />
+<link rel="stylesheet" href="assets/css/imports.css">
+<link rel="stylesheet" href="assets/css/aos.css">
+<link rel="stylesheet" href="assets/css/font.css" />
+<link rel="stylesheet" href="cdn.sellix.io/static/css/embed.css" />
+
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .post {
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: calc(25% - 20px); 
+    float: left;
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+  }
+  .post:hover {
+    transform: rotateY(5deg);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+  .post img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .post .image-container {
+    width: 100%;
+    height: 200px; 
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .post .image-container img {
+    width: 100%;
+    height: auto;
+  }
+  .likeButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+    color: #fff;
+  }
+  .likeButton:hover {
+    color: #f0f0f0;
+  }
+  .likeCount {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #f0f0f0;
+  }
+  #commentSection {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #333;
+    border-left: 1px solid #444;
+    overflow-y: scroll;
+    padding: 20px;
+  }
+  #commentSection h2 {
+    margin-top: 0;
+    color: #fff;
+  }
+  #commentPseudo,
+  #commentText {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #555;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #444;
+  }
+  #commentText {
+    height: 100px;
+  }
+  #comments {
+    margin-top: 10px;
+  }
+  #comments div {
+    border-bottom: 1px solid #555;
+    padding: 10px 0;
+    color: #fff;
+  }
+  #comments div:last-child {
+    border-bottom: none;
+  }
+  #newPostButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #020b4e;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  #newPostButton:hover {
+    background-color: #444;
+  }
+  #searchBar {
+    margin-bottom: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #444;
+    display: flex;
+  }
+  #searchInput {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background: transparent;
+    color: #fff;
+  }
+  #searchButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #020b4e;
+    color: #fff;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    transition: background-color 0.3s;
+  }
+  #searchButton:hover {
+    background-color: #444;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div id="searchBar">
+    <input type="text" id="searchInput" placeholder="Rechercher une publication...">
+    <button id="searchButton" onclick="searchPost()">Rechercher</button>
+  </div>
+
+  <div id="postForm" style="display: none;">
+    <h2>Nouvelle Publication</h2>
+    <input type="text" id="title" placeholder="Titre"><br>
+    <input type="text" id="description" placeholder="Description"><br>
+    <input type="text" id="pseudo" placeholder="Pseudo"><br>
+    <input type="url" id="url" pattern="https://pandabuy\.allapp\.link/.*" placeholder="URL"><br>
+    <input type="file" id="imageFile" accept="image/jpeg, image/png"><br>
+    <button onclick="publishPost()">Publier</button>
+  </div>
+
+  <div id="postsContainer"></div>
+
+  <div id="commentSection">
+    <h2>Commentaires</h2>
+    <input type="text" id="commentPseudo" placeholder="Votre pseudo"><br>
+    <textarea id="commentText" placeholder="Votre commentaire"></textarea><br>
+    <button onclick="submitComment()">Commenter</button>
+    <button onclick="closeCommentSection()">Fermer</button>
+    <div id="comments"></div>
+  </div>
+</div>
+
+<button id="newPostButton" onclick="togglePostForm()">+</button>
+
+<script>
+  function togglePostForm() {
+    var form = document.getElementById("postForm");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+  }
+
+
+function publishPost() {
+  var title = document.getElementById("title").value;
+  var description = document.getElementById("description").value;
+  var pseudo = document.getElementById("pseudo").value;
+  var url = document.getElementById("url").value;
+  var fileInput = document.getElementById("imageFile");
+
+  var urlPattern = /^https:\/\/pandabuy\.allapp\.link\//;
+  if (!urlPattern.test(url)) {
+    alert("L'URL doit commencer par https://pandabuy.allapp.link/");
+    return;
+  }
+
+
+  if (title && description && pseudo && url && fileInput.files.length > 0) {
+    var file = fileInput.files[0];
+    if (file.type === 'image/jpeg' || file.type === 'image/png') {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var imageData = e.target.result;
+        var post = document.createElement("div");
+        post.className = "post";
+        post.innerHTML = `
+          <h3>${title}</h3>
+          <p>${description}</p>
+          <p><strong>Pseudo:</strong> ${pseudo}</p>
+          <p><strong>URL:</strong> <a href="${url}" target="_blank">${url}</a></p>
+          <div class="image-container"><img src="${imageData}"></div>
+          <button class="likeButton" onclick="likePost(this)">💖 Like</button>
+          <span class="likeCount">0</span>
+          <img src="assets/images/commentaire.png" alt="Commentaires" onclick="showComments(this)">
+        `;
+        document.getElementById("postsContainer").appendChild(post);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      alert("Veuillez sélectionner une image au format JPG ou PNG.");
+    }
+  } else {
+    alert("Veuillez remplir tous les champs et sélectionner une image.");
+  }
+}
+
+
+    function likePost(button) {
+    var likeCount = button.nextElementSibling;
+    var liked = button.getAttribute("data-liked");
+
+    if (liked !== "true") {
+      var currentLikes = parseInt(likeCount.textContent);
+      likeCount.textContent = currentLikes + 1;
+      button.setAttribute("data-liked", "true");
+      button.textContent = "💖 Liked";
+    }
+  }
+
+function showComments(button) {
+  var commentSection = document.getElementById("commentSection");
+  var commentsContainer = document.getElementById("comments");
+  commentsContainer.innerHTML = ""; 
+
+  var comments = ["Commentaire 1", "Commentaire 2", "Commentaire 3"];
+  comments.forEach(function(comment) {
+    var commentElement = document.createElement("div");
+    commentElement.textContent = comment;
+    commentsContainer.appendChild(commentElement);
+  });
+
+  commentSection.style.display = "block";
+}
+
+
+  function submitComment() {
+    var pseudo = document.getElementById("commentPseudo").value;
+    var commentText = document.getElementById("commentText").value;
+
+    if (pseudo && commentText) {
+      var commentElement = document.createElement("div");
+      commentElement.textContent = `${pseudo}: ${commentText}`;
+      document.getElementById("comments").appendChild(commentElement);
+
+      document.getElementById("commentPseudo").value = "";
+      document.getElementById("commentText").value = "";
+    }
+  }
+
+
+  function closeCommentSection() {
+    document.getElementById("commentSection").style.display = "none";
+  }
+
+   function searchPost() {
+    var searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
+    var posts = document.getElementsByClassName("post");
+    var found = false;
+
+    for (var i = 0; i < posts.length; i++) {
+      var title = posts[i].getElementsByTagName("h3")[0].textContent.trim().toLowerCase();
+      if (title.includes(searchTerm)) {
+        posts[i].style.display = "block";
+        found = true;
+      } else {
+        posts[i].style.display = "none";
+      }
+    }
+
+    if (!found) {
+      alert("Publication introuvable.");
+    }
+  }
+
+</script>
+</body>
+</html>
+

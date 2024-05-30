@@ -1,101 +1,262 @@
-
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Une page web de démonstration avec HTML et CSS">
-    <link rel="stylesheet" href="style.css"> <!-- Lien vers le fichier CSS externe -->
-    <title>Ma page web + JANDIA Auwen</title>
-</head>
-<body>
 
-    <!-- En-tête -->
-    <header>
-        <h1>Jujustu Kaisen</h1>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="UTF-8">
+    <meta property="og:title" content="Pandabuy France">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandabuy France</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/imports.css">
+    <link rel="stylesheet" href="assets/css/aos.css">
+    <link rel="stylesheet" href="assets/css/font.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image" href="https://cdn.discordapp.com/attachments/1191402001683193977/1192936007851593839/Untitled-1.png">
+
+    <!-- jQuery Library -->
+    <script src="assets/js/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- AOS Library -->
+    <script src="assets/js/aos@2.3.1/aos.js"></script>
+
+    <!-- Sellix Embed Script -->
+    <script src="cdn.sellix.io/static/js/embed.js"></script>
+
+    <!-- Sellix Embed Styles -->
+    <link rel="stylesheet" href="cdn.sellix.io/static/css/embed.css" />
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background-image: url('assets/images/fond.jpg');
+            background-size: 1920px 1080px;
+            background-repeat: no-repeat;
+        }
+
+        .head {
+            width: 100%;
+            height: 20px;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .header {
+            border-radius: 20px 20px 0px 0px;
+            padding: 5px 0px 10px 30px;
+            color: #fff;
+            width: 100%;
+            height: 55px;
+            display: flex;
+            align-content: center;
+            justify-content: space-between;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .nav a {
+            color: #666;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            margin-right: 35px;
+            transition: color 0.5s;
+        }
+
+        .nav-link.wide {
+            color: white;
+        }
+
+        .white-link {
+            color: white;
+        }
+
+        .nav a.selected {
+            color: white;
+        }
+
+        .nav a:hover {
+            color: rgb(255, 255, 255);
+        }
+
+        .faq-item,
+        .faq-item1,
+        .faq-item2,
+        .faq-item3,
+        .faq-item4 {
+            margin-bottom: 40px;
+            margin-top: 40px;
+            padding-left: 15px;
+            border-left: 2px solid #020b4e;
+            transition: 2s;
+        }
+
+        .faq-line {
+            border-left: 5px solid #020b4e;
+            box-shadow: 1px 1px 15px #020b4e;
+            border-radius: 5px;
+            padding: .6rem 1.5rem;
+            margin-bottom: 1.7rem;
+        }
+
+        .faq-body,
+        .faq-body1,
+        .faq-body2,
+        .faq-body3,
+        .faq-body4 {
+            padding-left: 15px;
+            display: none;
+            color: white;
+            width: 95%;
+            margin-top: 30px;
+        }
+
+        .faq-wrapper {
+            width: 75%;
+            margin: 0 auto;
+        }
+
+        .header p,
+        .header h1 {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .faq-inner {
+            padding: 30px;
+            transition: 2s;
+        }
+
+        .faq-plus {
+            cursor: pointer;
+            float: right;
+            font-size: 1.4em;
+            line-height: 1em;
+            cursor: pointer;
+        }
+
+        hr {
+            background-color: #020b4e;
+            box-shadow: 1px 1px 15px #020b4e;
+        }
+
+        .faq-item h3,
+        .faq-item1 h3,
+        .faq-item2 h3,
+        .faq-item3 h3,
+        .faq-item4 h3 {
+            color: white;
+            transition: 2s;
+        }
+
+        .faq-item h3:hover,
+        .faq-item1 h3:hover,
+        .faq-item2 h3:hover,
+        .faq-item3 h3:hover,
+        .faq-item4 h3:hover {
+            color: #020b4e;
+            transition: 2s;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head"></div>
+
+    <!-- Navigation Header -->
+    <header id="navbar" class="active">
+        <div class="header">
+            <div class="brand">
+                <h1>Pandabuy <span style="color: red;">France</span></h1>
+            </div>
+            <nav class="nav">
+                <a href="" class="nav-link wide">Accueil</a>
+                <a href="https://discord.gg/pandabuy-fr" target="_blank">Discord</a>
+                <a href="https://www.youtube.com/@PandabuyFr" target="_blank">YouTube</a>
+                <a href="QC.html" target="_blank">QC</a>
+                <a href="spreadsheet.html" target="_blank">SpreadSheet</a>
+            </nav>
+        </div>
     </header>
 
-	
-    <!-- Barre de navigation -->
-    <nav>
-        <ul>
-            <li><a href="accueil.html">Accueil</a></li>
-            <li><a href="a-propos.html">À propos</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- Landing Section -->
+    <section id="landing">
+        <div class="container h-100">
+            <div class="row align-items-center h-100">
+                <div class="col-md-6" data-aos="fade-right" data-aos-duration="2200">
+                    <div class="left">
+                        <div class="box-welcome">
+                            <!--<span>Dev By Nobody </span>-->
+                        </div>
+                        <div class="content">
+                            <h1 class="mb-3"><span style="color: #020b4e;">Bienvenue</span> sur Pandabuy <span style="color: red;">France</span></h1>
+                            <div class="paragraph">
+                                <p class="mb-5"></p>
+                            </div>
+                        </div>
 
-    <section>
-        <!-- Article 1 -->
-        <article>
-            <h2>Article 1</h2>
-            <p>Ceci est le premier article de la page.</p>
-        </article>
-    
-        <!-- Video -->
-        <div id="video-container">
-            <video id="video" controls>
-                <source src="http://techslides.com/demos/sample-videos/small.ogv" type="video/ogg">
-                <source src="/build/videos/arcnet.io(7-sec).mp4" type="video/mp4">
-            </video>
+                        <a href="https://discord.gg/pandabuy-fr" class="button">Discord</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 d-flex justify-content-end right" data-aos="fade-left" data-aos-duration="2200">
+                    <img class="tilted" style="top: 30px; box-shadow: 0px 0px 50px #020b4e; border-radius: 50px;" src="assets\images\panda.png" alt="Tilted Image">
+                </div>
+            </div>
         </div>
     </section>
-    
 
+    <!-- Product Information Section -->
+    <section id="product-info">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 left" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="product-description">
+                        <!-- Product description content -->
+                    </div>
+                </div>
 
+                <div class="col-md-6 left" data-aos="fade-right" data-aos-duration="1000">
+                    <!-- Additional product information content -->
+                </div>
 
-    <!-- Liste ordonnée
-    <ol>
-        <li>Élément 1</li>
-        <li>Élément 2</li>
-        <li>Élément 3</li>
-    </ol>
+                <br>
 
-    <!-- Liste non ordonnée
-    <ul>
-        <li>Item A</li>
-        <li>Item B</li>
-        <li>Item C</li>
-    </ul> -->
+                <div class="buy ">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <!-- Buy button content -->
+                        </div>
+                        <div>
+                            <!-- Additional buy content -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Formulaire -->
-    <form>
-        <label for="nom">Nom :</label><br>
-        <input type="text" id="nom" name="nom" required><br>
+    <hr>
 
-        <label for="email">Email :</label><br>
-        <input type="email" id="email" name="email" required><br>
+    <!-- Vouch Section -->
+    <section id="vouch">
+        <!-- Content for the vouch section -->
+    </section>
 
-        <label for="message">Message :</label><br>
-        <textarea id="message" name="message" required></textarea>
+    <hr>
 
-        <button type="submit">Envoyer</button>
-    </form>
-
-
-    <!-- Tableau
-    <table>
-        <tr>
-            <th>Colonne 1</th>
-            <th>Colonne 2</th>
-            <th>Colonne 3</th>
-        </tr>
-        <tr>
-            <td>Ligne 1, Cellule 1</td>
-            <td>Ligne 1, Cellule 2</td>
-            <td>Ligne 1, Cellule 3</td>
-        </tr>
-        <tr>
-            <td>Ligne 2, Cellule 1</td>
-            <td>Ligne 2, Cellule 2</td>
-            <td>Ligne 2, Cellule 3</td>
-        </tr>
-        <tr>
-            <td>Ligne 3, Cellule 1</td>
-            <td>Ligne 3, Cellule 2</td>
-            <td>Ligne 3, Cellule 3</td>
-        </tr>
-    </table>
- -->
+    <!-- FAQ Section -->
+    <section id="faq">
+        <!-- FAQ section content -->
+    </section>
 </body>
+
 </html>
